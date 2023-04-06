@@ -4,29 +4,33 @@
 using namespace std;
 using namespace std::chrono;
 
-
+// Node Structure -- 
 struct Node{
     int data;
     struct Node* next;
 };
 
 // stack Size ;
-const int stack_size = 100;
+int stack_size = 100;
+
+//Store Current size of stack -
 int sizes = 0;
 
 //Head pointer ---
 struct Node* head = NULL;
 
+//Check if the stack is empty --
 bool isEmpty(){
     return head == NULL;
 }
 
+//Check if the stack is Full --
 bool isFull(){
     return sizes == stack_size;
 }
 
 
-//insert value to start --
+//Push method 
 void Push(int new_data) {
    if(!isFull()){
        struct Node* new_node = (struct Node*) malloc(sizeof(struct Node));
@@ -46,19 +50,17 @@ void Push(int new_data) {
 
 }
 
-int Pop(){
+// Pop method() -- 
+void Pop(){
     if(!isEmpty()){
-        struct Node* ptr;
-        ptr = head;
         head = head->next;
         sizes--;
-        return ptr->data;
     }else{
         cout<<"Stack is Empty --"<<endl;
     }
 }
 
-
+// Get Top element of the stack -- 
 int StackTop(){
     if(isEmpty()){
         cout<<"Stack is Empty"<<endl;
@@ -69,6 +71,7 @@ int StackTop(){
     }
 }
 
+ // print (display) stack -- 
 void Display() {
     if(!isEmpty()){
        struct Node* ptr;
@@ -84,6 +87,9 @@ void Display() {
 }
 
 int main(){
+
+    cout<<"Enter Size of Stack : ";
+    cin>> stack_size;
 
     double startTime = clock();
 
@@ -104,6 +110,7 @@ int main(){
         Pop();
     }
     Display();
+
     Push(4);
     Push(30);
     Push(3);
@@ -119,5 +126,7 @@ int main(){
 
     return 0;
 }
+
+
 
 
