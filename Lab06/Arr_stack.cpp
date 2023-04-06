@@ -1,8 +1,6 @@
 #include <iostream>
 #include <ctime>
-#include <chrono>
 using namespace std;
-using namespace std::chrono;
 
 const int stack_size = 100;
 
